@@ -2,6 +2,9 @@
 
 # 该版本只有我自己能用，只有我自己能用，只有我自己能用，我做不出通用的，不好意思。
 
+# 如果 Github 显示效果不好的话  也可以到这个网址查看教程
+http://codingstory.com.cn/mo-gai-mentohust-v4ban-ben-de-xin-de/
+
 用 Mentohust 最初版的源代码加上 Fork 来的V4算法拼凑出的一个Mentohust.
 
 适用于集美大学教育网接入学生
