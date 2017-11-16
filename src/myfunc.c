@@ -138,7 +138,7 @@ static int checkFile() {
 	FILE *fp = NULL;
 	if ((fp=fopen(dataFile, "rb")) == NULL)
 		goto fileError;
-	if (fread(buf, 16, 1, fp)<1 || memcmp(buf, "HUST", 4)!=0) {
+	if (fread(buf, 16, 1, fp)<1 ) {
 		fclose(fp);
 		goto fileError;
 	}
