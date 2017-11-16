@@ -404,7 +404,8 @@ static int savePacket(const char *name,unsigned char *buf,int size)
 	sprintf(filename,"/home/kkke/Downloads/pkt_%s.c",name);
 	FILE *fout=fopen(filename,"w");
 	fprintf(fout,"static const unsigned char pkt_%s[%d] = \n{\n",name,size);
-	for(int i=0;i<size;i++)
+	int i,j;
+	for(i=0;i<size;i++)
 	{
 		if(i+1==size)
 		{
@@ -415,7 +416,7 @@ static int savePacket(const char *name,unsigned char *buf,int size)
 		if(i%8==7)
 		{
 			fprintf(fout,"/*");
-			for(int j=i-7;j<=i;j++)
+			for(j=i-7;j<=i;j++)
 			{
 				if(buf[j]>40&&buf[j]<130)fprintf(fout,"%c",buf[j]);
 				else fprintf(fout,".");
@@ -425,6 +426,7 @@ static int savePacket(const char *name,unsigned char *buf,int size)
 	}
 	fprintf(fout,"\n};");
 	fclose(fout);
+	return 0;
 }
 
 static int sendStartPacket()
