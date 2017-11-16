@@ -398,36 +398,36 @@ static void fillEtherAddr(u_int32_t protocol)
 	*(u_int32_t *)(sendPacket+0x0C) = htonl(protocol);
 }
 
-static int savePacket(const char *name,unsigned char *buf,int size)
-{
-	char filename[100];
-	sprintf(filename,"/home/kkke/Downloads/pkt_%s.c",name);
-	FILE *fout=fopen(filename,"w");
-	fprintf(fout,"static const unsigned char pkt_%s[%d] = \n{\n",name,size);
-	int i,j;
-	for(i=0;i<size;i++)
-	{
-		if(i+1==size)
-		{
-			fprintf(fout,"0x%02x",buf[i]);
-			break;
-		}
-		fprintf(fout,"0x%02x, ",buf[i]);
-		if(i%8==7)
-		{
-			fprintf(fout,"/*");
-			for(j=i-7;j<=i;j++)
-			{
-				if(buf[j]>40&&buf[j]<130)fprintf(fout,"%c",buf[j]);
-				else fprintf(fout,".");
-			}
-			fprintf(fout,"*/\n");
-		}
-	}
-	fprintf(fout,"\n};");
-	fclose(fout);
-	return 0;
-}
+//static int savePacket(const char *name,unsigned char *buf,int size)
+//{
+//	char filename[100];
+//	sprintf(filename,"/home/kkke/Downloads/pkt_%s.c",name);
+//	FILE *fout=fopen(filename,"w");
+//	fprintf(fout,"static const unsigned char pkt_%s[%d] = \n{\n",name,size);
+//	int i,j;
+//	for(i=0;i<size;i++)
+//	{
+//		if(i+1==size)
+//		{
+//			fprintf(fout,"0x%02x",buf[i]);
+//			break;
+//		}
+//		fprintf(fout,"0x%02x, ",buf[i]);
+//		if(i%8==7)
+//		{
+//			fprintf(fout,"/*");
+//			for(j=i-7;j<=i;j++)
+//			{
+//				if(buf[j]>40&&buf[j]<130)fprintf(fout,"%c",buf[j]);
+//				else fprintf(fout,".");
+//			}
+//			fprintf(fout,"*/\n");
+//		}
+//	}
+//	fprintf(fout,"\n};");
+//	fclose(fout);
+//	return 0;
+//}
 
 static int sendStartPacket()
 {
@@ -507,7 +507,7 @@ static int sendIdentityPacket()
 		memcpy(sendPacket+0x2c, encodeIP(mask), 0x04);	//fill mask
 		memcpy(sendPacket+0x30, encodeIP(gateway), 0x04); //fill gateway
 		*/
-		savePacket("V4",computeV4(pad,16),0x80);
+		//savePacket("V4",computeV4(pad,16),0x80);
 		memcpy(sendPacket + 0xF7 + nameLen, computeV4(pad, 16), 0x80);
 		setTimer(timeout);
 	}
@@ -575,7 +575,7 @@ static int sendChallengePacket()
 		//sendPacket[0x77] = 0xc7;          
 		setTimer(timeout);
 	}
-	savePacket("aaa",sendPacket,595);
+	//savePacket("aaa",sendPacket,595);
 	return pcap_sendpacket(hPcap, sendPacket, 595);
 }
 
