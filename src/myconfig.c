@@ -51,9 +51,9 @@ static const char *D_DHCPSCRIPT = "dhcping -v -t 15";	/* 默认DHCP脚本 */
 #else
 static const char *D_DHCPSCRIPT = "dhclient";	/* 默认DHCP脚本 */
 #endif
-static const char *CFG_FILE = "/jffs/etc/mentohust.conf";	/* 配置文件 */
-static const char *LOG_FILE = "/jffs/tmp/mentohust.log";	/* 日志文件 */
-static const char *LOCK_FILE = "/jffs/tmp/mentohust.pid";	/* 锁文件 */
+static const char *CFG_FILE = "/etc/mentohust.conf";	/* 配置文件 */
+static const char *LOG_FILE = "/tmp/mentohust.log";	/* 日志文件 */
+static const char *LOCK_FILE = "/var/run/mentohust.pid";	/* 锁文件 */
 #define LOCKMODE (S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH)	/* 创建掩码 */
 
 #ifndef NO_NOTIFY
