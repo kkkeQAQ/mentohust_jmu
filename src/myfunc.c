@@ -42,7 +42,7 @@ static const char *DATAFILE = "/etc/mentohust/";	/* 默认数据文件(目录) *
 /* Frame (527 bytes) */
 
 static int dataOffset;	/* 抓包偏移 */
-static u_int32_t echoKey = 0, echoNo = 0;	/* Echo阶段所需 */
+static u_int32_t echoKey = 0, echoNo = 0x102B;	/* Echo阶段所需 */
 u_char *fillBuf = NULL;	/* 填充包地址 */
 int fillSize = 0;	/* 填充包大小 */
 int bufType = 0;	/*0内置xrgsu 1内置Win 2仅文件 3文件+校验*/
